@@ -23,12 +23,12 @@ function ShotCard({
     <motion.button
       layout
       type="button"
-      initial={{ opacity: 0, scale: 0.96 }}
-      animate={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, y: 22, scale: 0.94 }}
+      animate={{ opacity: 1, y: 0, scale: 1 }}
       exit={{ opacity: 0, scale: 0.96 }}
-      transition={{ duration: 0.35 }}
+      transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
       onClick={() => onOpen(shot)}
-      className="group relative flex aspect-[3/4] flex-col overflow-hidden rounded-2xl border border-white/8 bg-ink-elevated text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-gold"
+      className="group shine-sweep relative flex aspect-[3/4] flex-col overflow-hidden rounded-2xl border border-white/10 bg-ink-elevated text-left shadow-[0_10px_30px_rgba(0,0,0,0.35)] transition duration-500 hover:-translate-y-2 hover:border-gold/35 hover:shadow-[0_22px_50px_rgba(0,0,0,0.5),0_0_0_1px_rgba(250,204,21,0.15)] focus:outline-none focus-visible:ring-2 focus-visible:ring-gold"
     >
       <div className="relative min-h-0 flex-1 bg-ink">
         <Image

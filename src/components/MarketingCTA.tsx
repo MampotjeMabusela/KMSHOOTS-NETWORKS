@@ -8,12 +8,14 @@ export function MarketingCTA() {
   const { openBooking } = useBooking();
 
   return (
-    <section className="relative overflow-hidden bg-ink-soft py-20 sm:py-24">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(250,204,21,0.12),transparent_55%)]" />
+    <section className="relative z-10 overflow-hidden bg-ink-soft/70 py-20 sm:py-24">
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(250,204,21,0.16),transparent_55%)]" />
+      <div className="pointer-events-none absolute left-1/2 top-1/2 h-64 w-64 -translate-x-1/2 -translate-y-1/2 rounded-full bg-gold/10 blur-3xl" />
       <motion.div
-        initial={{ opacity: 0, y: 16 }}
-        whileInView={{ opacity: 1, y: 0 }}
+        initial={{ opacity: 0, y: 24, scale: 0.98 }}
+        whileInView={{ opacity: 1, y: 0, scale: 1 }}
         viewport={{ once: true }}
+        transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
         className="relative mx-auto max-w-4xl px-4 text-center sm:px-6"
       >
         <p className="text-xs font-semibold uppercase tracking-[0.28em] text-gold">
@@ -31,13 +33,13 @@ export function MarketingCTA() {
           <button
             type="button"
             onClick={openBooking}
-            className="rounded-full bg-gold px-7 py-3.5 text-sm font-semibold uppercase tracking-[0.14em] text-ink"
+            className="btn-3d book-pulse rounded-full bg-gold px-7 py-3.5 text-sm font-semibold uppercase tracking-[0.14em] text-ink"
           >
             Book a brand shoot
           </button>
           <Link
             href="/business-marketing"
-            className="rounded-full border border-cream/20 px-7 py-3.5 text-sm font-medium uppercase tracking-[0.14em] text-cream transition hover:border-gold/50 hover:text-gold"
+            className="btn-3d rounded-full border border-cream/20 px-7 py-3.5 text-sm font-medium uppercase tracking-[0.14em] text-cream transition hover:border-gold/50 hover:text-gold"
           >
             Explore marketing
           </Link>

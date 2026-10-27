@@ -30,7 +30,7 @@ export function Navbar() {
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
         scrolled || open
-          ? "border-b border-white/5 bg-ink/90 backdrop-blur-xl"
+          ? "border-b border-white/10 bg-ink/75 shadow-[0_12px_40px_rgba(0,0,0,0.45)] backdrop-blur-2xl"
           : "bg-transparent"
       }`}
     >
@@ -73,7 +73,7 @@ export function Navbar() {
           <button
             type="button"
             onClick={openBooking}
-            className="book-pulse hidden items-center rounded-full bg-gold px-4 py-2.5 text-xs font-semibold uppercase tracking-[0.14em] text-ink shadow-[0_0_24px_rgba(250,204,21,0.35)] transition hover:bg-gold-bright sm:inline-flex"
+            className="btn-3d book-pulse hidden items-center rounded-full bg-gold px-4 py-2.5 text-xs font-semibold uppercase tracking-[0.14em] text-ink sm:inline-flex"
           >
             Book Now
           </button>
