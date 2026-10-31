@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Cormorant_Garamond, Outfit } from "next/font/google";
 import { SiteShell } from "@/components/SiteShell";
 import { BRAND } from "@/lib/constants";
@@ -37,6 +37,28 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_ZA",
   },
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "black-translucent",
+    title: BRAND.name,
+  },
+  formatDetection: {
+    telephone: true,
+    email: true,
+    address: true,
+  },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  viewportFit: "cover",
+  themeColor: [
+    { media: "(prefers-color-scheme: dark)", color: "#0a0a0a" },
+    { media: "(prefers-color-scheme: light)", color: "#0a0a0a" },
+  ],
+  colorScheme: "dark",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
@@ -45,7 +67,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en-ZA"
       className={`${outfit.variable} ${cormorant.variable} h-full antialiased`}
     >
-      <body className="flex min-h-full flex-col bg-ink text-cream">
+      <body className="flex min-h-full flex-col overflow-x-clip bg-ink text-cream">
         <SiteShell>{children}</SiteShell>
       </body>
     </html>

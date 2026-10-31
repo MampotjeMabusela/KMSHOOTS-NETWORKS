@@ -14,6 +14,11 @@ type TiltCardProps = {
   as?: "button" | "div";
 };
 
+function canTilt() {
+  if (typeof window === "undefined") return false;
+  return window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+}
+
 export function TiltCard({
   children,
   className = "",
@@ -23,6 +28,7 @@ export function TiltCard({
   const ref = useRef<HTMLButtonElement | HTMLDivElement>(null);
 
   function onMove(e: MouseEvent<HTMLElement>) {
+    if (!canTilt()) return;
     const el = ref.current;
     if (!el) return;
     const rect = el.getBoundingClientRect();

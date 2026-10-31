@@ -12,9 +12,9 @@ export function SiteShell({ children }: { children: ReactNode }) {
   return (
     <BookingProvider>
       <AmbientLife />
-      <div className="relative z-10 flex min-h-full flex-col">
+      <div className="relative z-10 flex min-h-full min-w-0 flex-col">
         <Navbar />
-        <main className="flex-1">{children}</main>
+        <main className="min-w-0 flex-1">{children}</main>
         <Footer />
       </div>
       <BookingModal />

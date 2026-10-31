@@ -110,7 +110,7 @@ export function Portfolio() {
           </div>
 
           <div
-            className="flex flex-wrap gap-2"
+            className="chip-scroll sm:flex-wrap sm:overflow-visible"
             role="tablist"
             aria-label="Portfolio filters"
           >
@@ -127,7 +127,7 @@ export function Portfolio() {
                   role="tab"
                   aria-selected={filter === tab}
                   onClick={() => setFilter(tab)}
-                  className={`rounded-full px-3.5 py-1.5 text-xs font-medium tracking-wide transition ${
+                  className={`min-h-10 rounded-full px-3.5 py-2 text-xs font-medium tracking-wide transition ${
                     filter === tab
                       ? "bg-gold text-ink"
                       : "border border-white/10 text-cream/70 hover:border-gold/40 hover:text-gold"
@@ -193,7 +193,7 @@ export function Portfolio() {
       <AnimatePresence>
         {active && (
           <motion.div
-            className="fixed inset-0 z-[80] flex items-center justify-center bg-black/90 p-4 backdrop-blur-sm"
+            className="fixed inset-0 z-[80] flex items-center justify-center bg-black/90 p-3 backdrop-blur-sm sm:p-4 pt-[max(0.75rem,env(safe-area-inset-top,0px))] pb-[max(0.75rem,env(safe-area-inset-bottom,0px))]"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -210,7 +210,7 @@ export function Portfolio() {
               className="relative w-full max-w-4xl overflow-hidden rounded-2xl border border-white/10 bg-ink"
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="relative aspect-[4/3] max-h-[75svh] bg-ink sm:aspect-[16/10]">
+              <div className="relative aspect-[4/3] max-h-[min(70svh,70dvh)] bg-ink sm:aspect-[16/10] sm:max-h-[75svh]">
                 <div className="absolute inset-3">
                   <Image
                     src={active.src}

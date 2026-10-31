@@ -31,13 +31,37 @@
 
 html {
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 body {
   background: var(--ink);
   color: var(--cream);
   font-family: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
-  overflow-x: hidden;
+  overflow-x: clip;
+  min-width: 0;
+}
+
+img,
+video,
+iframe,
+canvas,
+svg {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Full-bleed Next/Image fill containers keep their own height */
+img[data-nimg="fill"] {
+  height: 100%;
+}
+
+button,
+a,
+[role="button"] {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
 
 .font-display {
@@ -76,12 +100,15 @@ body {
 
 .field-input {
   width: 100%;
+  max-width: 100%;
   border-radius: 0.9rem;
   border: 1px solid rgba(255, 255, 255, 0.1);
   background: rgba(10, 10, 10, 0.55);
   padding: 0.75rem 0.9rem;
   color: var(--cream);
-  font-size: 0.95rem;
+  /* ≥16px prevents iOS Safari zooming inputs on focus */
+  font-size: 1rem;
+  line-height: 1.4;
   outline: none;
   transition:
     border-color 0.2s ease,
@@ -341,7 +368,49 @@ body {
   }
 }
 
+/* Safe areas — notches, Dynamic Island, home indicators */
+.safe-top {
+  padding-top: env(safe-area-inset-top, 0px);
+}
+
+.safe-bottom {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+.safe-x {
+  padding-left: max(1rem, env(safe-area-inset-left, 0px));
+  padding-right: max(1rem, env(safe-area-inset-right, 0px));
+}
+
+.safe-fab {
+  bottom: max(1.25rem, calc(env(safe-area-inset-bottom, 0px) + 0.75rem));
+  right: max(1.25rem, calc(env(safe-area-inset-right, 0px) + 0.75rem));
+}
+
+/* Horizontal chip / filter scroller on narrow screens */
+.chip-scroll {
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding-bottom: 0.25rem;
+}
+
+.chip-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.chip-scroll > * {
+  flex: 0 0 auto;
+}
+
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
   .ambient-orb,
   .book-pulse,
   .float-slow,
@@ -354,5 +423,45 @@ body {
   .tilt-card,
   .btn-3d {
     transition: none !important;
+  }
+}
+
+/* Touch / coarse pointers: no hover-dependent motion */
+@media (hover: none), (pointer: coarse) {
+  .tilt-card:hover {
+    box-shadow: none;
+  }
+
+  .btn-3d:hover {
+    transform: none;
+  }
+
+  .shine-sweep:hover::after {
+    transform: translateX(-120%);
+  }
+
+  .float-slow {
+    animation: none;
+  }
+}
+
+/* Very small phones */
+@media (max-width: 359px) {
+  .field-input {
+    padding: 0.65rem 0.75rem;
+  }
+}
+
+/* Short landscape phones — keep heroes usable */
+@media (max-height: 480px) and (orientation: landscape) {
+  .hero-stage {
+    min-height: auto !important;
+  }
+
+  .hero-stage-inner {
+    min-height: auto !important;
+    padding-top: 5.5rem !important;
+    padding-bottom: 2rem !important;
+    align-items: center !important;
   }
 }

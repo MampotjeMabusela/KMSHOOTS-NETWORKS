@@ -29,17 +29,17 @@ export function MarketingCTA() {
           that turn browsers into believers — crafted for South African
           businesses ready to look premium.
         </p>
-        <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+        <div className="mt-8 flex w-full flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center">
           <button
             type="button"
             onClick={openBooking}
-            className="btn-3d book-pulse rounded-full bg-gold px-7 py-3.5 text-sm font-semibold uppercase tracking-[0.14em] text-ink"
+            className="btn-3d book-pulse min-h-12 rounded-full bg-gold px-7 py-3.5 text-sm font-semibold uppercase tracking-[0.14em] text-ink"
           >
             Book a brand shoot
           </button>
           <Link
             href="/business-marketing"
-            className="btn-3d rounded-full border border-cream/20 px-7 py-3.5 text-sm font-medium uppercase tracking-[0.14em] text-cream transition hover:border-gold/50 hover:text-gold"
+            className="btn-3d inline-flex min-h-12 items-center justify-center rounded-full border border-cream/20 px-7 py-3.5 text-sm font-medium uppercase tracking-[0.14em] text-cream transition hover:border-gold/50 hover:text-gold"
           >
             Explore marketing
           </Link>

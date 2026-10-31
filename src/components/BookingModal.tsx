@@ -102,7 +102,7 @@ export function BookingModal() {
     <AnimatePresence>
       {isOpen && (
         <motion.div
-          className="fixed inset-0 z-[90] flex items-end justify-center sm:items-center sm:p-4"
+          className="fixed inset-0 z-[90] flex items-end justify-center sm:items-center sm:p-4 sm:pb-[max(1rem,env(safe-area-inset-bottom,0px))] sm:pt-[max(1rem,env(safe-area-inset-top,0px))]"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -122,9 +122,9 @@ export function BookingModal() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 24, scale: 0.98 }}
             transition={{ type: "spring", stiffness: 320, damping: 28 }}
-            className="relative z-10 max-h-[92svh] w-full overflow-y-auto rounded-t-3xl border border-white/10 bg-ink-elevated shadow-2xl sm:max-w-lg sm:rounded-3xl"
+            className="relative z-10 max-h-[min(92svh,92dvh)] w-full max-w-full overflow-y-auto overscroll-contain rounded-t-3xl border border-white/10 bg-ink-elevated shadow-2xl sm:max-w-lg sm:rounded-3xl"
           >
-            <div className="sticky top-0 z-10 flex items-start justify-between gap-4 border-b border-white/8 bg-ink-elevated/95 px-5 py-4 backdrop-blur">
+            <div className="sticky top-0 z-10 flex items-start justify-between gap-3 border-b border-white/8 bg-ink-elevated/95 px-4 py-4 backdrop-blur sm:gap-4 sm:px-5">
               <div>
                 <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-gold">
                   Book your shoot
@@ -165,7 +165,10 @@ export function BookingModal() {
                 </button>
               </div>
             ) : (
-              <form onSubmit={onSubmit} className="space-y-4 px-5 py-5 sm:px-6">
+              <form
+                onSubmit={onSubmit}
+                className="safe-bottom space-y-4 px-4 py-5 sm:px-6"
+              >
                 <Field
                   label="Client name"
                   error={errors.name?.[0]}
@@ -262,7 +265,7 @@ export function BookingModal() {
                 <button
                   type="submit"
                   disabled={status === "loading"}
-                  className="flex w-full items-center justify-center gap-2 rounded-full bg-gold py-3.5 text-sm font-semibold uppercase tracking-[0.16em] text-ink transition hover:bg-gold-bright disabled:cursor-not-allowed disabled:opacity-70"
+                  className="flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-gold py-3.5 text-sm font-semibold uppercase tracking-[0.16em] text-ink transition hover:bg-gold-bright disabled:cursor-not-allowed disabled:opacity-70"
                 >
                   {status === "loading" ? (
                     <>

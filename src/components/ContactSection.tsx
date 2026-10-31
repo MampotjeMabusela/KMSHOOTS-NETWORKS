@@ -218,7 +218,7 @@ export function ContactSection({
                   <button
                     type="submit"
                     disabled={status === "loading"}
-                    className="flex w-full items-center justify-center gap-2 rounded-full bg-gold py-3.5 text-sm font-semibold uppercase tracking-[0.16em] text-ink disabled:opacity-70"
+                    className="flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-gold py-3.5 text-sm font-semibold uppercase tracking-[0.16em] text-ink disabled:opacity-70"
                   >
                     {status === "loading" ? (
                       <>
@@ -240,7 +240,7 @@ export function ContactSection({
             <iframe
               title="KMSHOOTS NETWORKS — Pretoria / Gauteng"
               src="https://maps.google.com/maps?q=Pretoria%2C%20Gauteng%2C%20South%20Africa&t=&z=11&ie=UTF8&iwloc=&output=embed"
-              className="h-[320px] w-full border-0 grayscale-[30%] contrast-[1.05] invert-[0.88] hue-rotate-180 sm:h-[400px]"
+              className="h-[min(50vw,280px)] min-h-[220px] w-full max-w-full border-0 grayscale-[30%] contrast-[1.05] invert-[0.88] hue-rotate-180 sm:h-[400px] sm:min-h-0"
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
               allowFullScreen

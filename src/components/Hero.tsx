@@ -22,6 +22,12 @@ export function Hero() {
   const shiftY = useTransform(springY, [-0.5, 0.5], [-8, 8]);
 
   function onMove(e: MouseEvent<HTMLDivElement>) {
+    if (
+      typeof window !== "undefined" &&
+      !window.matchMedia("(hover: hover) and (pointer: fine)").matches
+    ) {
+      return;
+    }
     const el = stageRef.current;
     if (!el) return;
     const rect = el.getBoundingClientRect();
@@ -39,7 +45,7 @@ export function Hero() {
       ref={stageRef}
       onMouseMove={onMove}
       onMouseLeave={onLeave}
-      className="relative isolate min-h-[100svh] overflow-hidden bg-ink"
+      className="hero-stage relative isolate min-h-[100svh] overflow-hidden bg-ink supports-[height:100dvh]:min-h-dvh"
     >
       <motion.div
         style={{ x: shiftX, y: shiftY }}
@@ -48,23 +54,23 @@ export function Hero() {
         <FullBleedPhoto src={hero.src} alt={hero.alt} priority dim />
       </motion.div>
 
-      <div className="relative z-10 mx-auto flex min-h-[100svh] max-w-7xl items-end px-4 pb-14 pt-28 sm:items-center sm:px-6 sm:pb-16 lg:px-8 lg:pt-24">
+      <div className="hero-stage-inner relative z-10 mx-auto flex min-h-[100svh] max-w-7xl items-end px-4 pb-[max(3.5rem,calc(env(safe-area-inset-bottom,0px)+3rem))] pt-[max(7rem,calc(env(safe-area-inset-top,0px)+5.5rem))] supports-[height:100dvh]:min-h-dvh sm:items-center sm:px-6 sm:pb-16 lg:px-8 lg:pt-24">
         <motion.div
           initial={{ opacity: 0, y: 36 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-          className="max-w-xl"
+          className="w-full max-w-xl"
         >
           <motion.p
             initial={{ opacity: 0, x: -16 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.15, duration: 0.7 }}
-            className="mb-5 font-display text-base italic tracking-wide text-gold/90 sm:text-lg md:text-xl"
+            className="mb-4 font-display text-sm italic tracking-wide text-gold/90 sm:mb-5 sm:text-lg md:text-xl"
           >
             {BRAND.legalName}
           </motion.p>
 
-          <h1 className="font-display text-[2.35rem] leading-[1.08] text-cream [text-shadow:0_10px_48px_rgba(0,0,0,0.55)] sm:text-5xl md:text-6xl lg:text-[3.75rem]">
+          <h1 className="font-display text-[clamp(1.85rem,8vw,3.75rem)] leading-[1.08] text-cream [text-shadow:0_10px_48px_rgba(0,0,0,0.55)]">
             {lines.map((line, i) => (
               <motion.span
                 key={line}
@@ -96,18 +102,18 @@ export function Hero() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.85, duration: 0.7 }}
-            className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center"
+            className="mt-8 flex w-full flex-col gap-3 sm:mt-9 sm:flex-row sm:items-center"
           >
             <button
               type="button"
               onClick={openBooking}
-              className="btn-3d book-pulse inline-flex items-center justify-center rounded-full bg-gold px-7 py-3.5 text-sm font-semibold uppercase tracking-[0.16em] text-ink"
+              className="btn-3d book-pulse inline-flex min-h-12 w-full items-center justify-center rounded-full bg-gold px-6 py-3.5 text-sm font-semibold uppercase tracking-[0.14em] text-ink sm:w-auto sm:px-7 sm:tracking-[0.16em]"
             >
               Book Your Shoot Today
             </button>
             <Link
               href="/portfolio"
-              className="btn-3d inline-flex items-center justify-center rounded-full border border-cream/30 bg-ink/40 px-7 py-3.5 text-sm font-medium uppercase tracking-[0.14em] text-cream backdrop-blur-md transition hover:border-gold/50 hover:text-gold"
+              className="btn-3d inline-flex min-h-12 w-full items-center justify-center rounded-full border border-cream/30 bg-ink/40 px-6 py-3.5 text-sm font-medium uppercase tracking-[0.12em] text-cream backdrop-blur-md transition hover:border-gold/50 hover:text-gold sm:w-auto sm:px-7 sm:tracking-[0.14em]"
             >
               Explore Portfolio
             </Link>
