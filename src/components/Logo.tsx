@@ -52,6 +52,13 @@ export function Logo({ compact = false, className = "" }: LogoProps) {
         >
           Networks (Pty) Ltd
         </span>
+        <span
+          className={`mt-0.5 font-medium tracking-[0.08em] text-cream/55 ${
+            compact ? "text-[9px] sm:text-[10px]" : "text-[10px] sm:text-xs"
+          }`}
+        >
+          Reg. {BRAND.registration}
+        </span>
       </span>
     </Link>
   );

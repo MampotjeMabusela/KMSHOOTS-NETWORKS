@@ -3,7 +3,6 @@ import { Services } from "@/components/Services";
 import { PortfolioTeaser } from "@/components/PortfolioTeaser";
 import { AboutPreview } from "@/components/AboutPreview";
 import { MarketingCTA } from "@/components/MarketingCTA";
-import { ContactSection } from "@/components/ContactSection";
 
 export default function HomePage() {
   return (
@@ -13,7 +12,6 @@ export default function HomePage() {
       <PortfolioTeaser />
       <AboutPreview />
       <MarketingCTA />
-      <ContactSection showForm={false} />
     </div>
   );
 }

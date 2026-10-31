@@ -1,6 +1,7 @@
 export const BRAND = {
   name: "KMSHOOTS NETWORKS",
   legalName: "K.M. SHOOTS NETWORKS (PTY) LTD",
+  registration: "K2026/184918/07",
   tagline: "Your Moments. Our Lens. Your Story.",
   footerQuote: "Capture. Create. Remember.",
   subtitle:

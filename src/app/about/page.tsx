@@ -6,7 +6,7 @@ import { PAGE_HEROES } from "@/lib/media";
 
 export const metadata: Metadata = {
   title: "About",
-  description: `Meet ${BRAND.legalName} — cinematic photography, videography, and marketing from Pretoria.`,
+  description: `Our Story — ${BRAND.legalName}. Built by young creatives who believe young people deserve a chance.`,
 };
 
 export default function AboutPage() {
@@ -15,7 +15,29 @@ export default function AboutPage() {
       <PageHero
         eyebrow="About us"
         title={BRAND.legalName}
-        description="We are a professional photography, videography, and business marketing agency based in Pretoria / Gauteng. Our craft sits at the intersection of cinema and celebration."
+        description={
+          <>
+            <h2 className="font-display text-2xl text-gold sm:text-3xl">
+              Our Story
+            </h2>
+            <p>
+              It started in 2021 with one young man with a camera and a dream.
+            </p>
+            <p>
+              Today, KMSHOOTS NETWORKS (PTY) LTD is run by 3 young people who
+              believe in one thing: young people deserve a chance.
+            </p>
+            <p>
+              We built this company to be that chance. A home for photographers,
+              videographers, marketers, and podcasters to learn, create, and get
+              paid for their talent.
+            </p>
+            <p>
+              From small shoots to big brands, we bring the same energy:
+              authentic, creative, and proudly South African.
+            </p>
+          </>
+        }
         image={PAGE_HEROES.about}
       />
 
